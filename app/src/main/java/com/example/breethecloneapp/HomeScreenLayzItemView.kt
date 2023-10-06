@@ -54,25 +54,27 @@ fun HomeScreenLazyItemView(itemName:String,navController: NavController) {
                     }
 
                 }
-                HomeScreenLazyItemData.options[1]->{
+//                HomeScreenLazyItemData.options[1]->{
+//
+//                }
+//                HomeScreenLazyItemData.options[2]->{
+//
+//                }
+//                HomeScreenLazyItemData.options[3]->{
+//
+//                }
+//                HomeScreenLazyItemData.options[4]->{
+//
+//                }
+//                HomeScreenLazyItemData.options[6]->{
+//
+//                }
 
-                }
-                HomeScreenLazyItemData.options[2]->{
-
-                }
-                HomeScreenLazyItemData.options[3]->{
-
-                }
-                HomeScreenLazyItemData.options[4]->{
-
-                }
-                HomeScreenLazyItemData.options[6]->{
-
-                }
+             else ->   Toast.makeText(context,itemName,Toast.LENGTH_SHORT).show()
 
             }
 
-            Toast.makeText(context,itemName,Toast.LENGTH_SHORT).show()
+
 
         }){
         Text(text = itemName, fontFamily = splashFont, fontWeight = FontWeight.Normal,

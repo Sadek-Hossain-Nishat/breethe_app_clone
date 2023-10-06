@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -170,9 +171,16 @@ fun SleepScreenWelcomeScreen() {
 
     LaunchedEffect(key1 = true ){
 
-        delay(3000)
+        delay(1000)
 
         animateButton = ! animateButton
+    }
+
+    val name by rememberSaveable {
+        mutableStateOf("")
+    }
+    val email by rememberSaveable {
+        mutableStateOf("")
     }
 
     // on below line we are creating a motion layout.
@@ -185,15 +193,25 @@ fun SleepScreenWelcomeScreen() {
             """ {
                 // on below line we are specifying width,height and margin
                 // from start, top and end for button1
-                button1: {
-                  width:"spread",
-                  height: 120,
+              img: {
+              
+                  width:100,
+                  height: 100,
                   start: ['parent', 'start', 16],
                   end: ['parent', 'end', 16],
-                  top: ['parent', 'top', 300],
-//                  center: ['parent','center']
+                  top: ['parent', 'top', 250],
+                  
                  
                 },
+                
+                text: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['img', 'top', 100],
+                  
+                
+                }
                 // on below line we are specifying width,height
                 // and margin from start, top and end for button2
 //                button2: {
@@ -213,13 +231,24 @@ fun SleepScreenWelcomeScreen() {
             """ {
                 // on below line we are specifying width,height and margin
                 // from start, top and end for button1
-                button1: {
-                  width: "spread",
-                  height: 120,
+                
+                img: {
+                  width: 100,
+                  height: 100,
                   start: ['parent', 'start', 30],
                   end: ['parent', 'end', 10],
-                  top: ['parent','top',50]
+                  top: ['parent','top',-150]
                 },
+
+                
+                 text: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['parent', 'top', 50],
+                  
+                
+                }
                 // on below line we are specifying width,height
                 // and margin from start, top and end for button2
 //                button2: {
@@ -240,60 +269,15 @@ fun SleepScreenWelcomeScreen() {
             .wrapContentHeight()
     ) {
         // on below line we are creating  a button.
-        Button(
-            // on below line we are adding on click.
-            onClick = {
-                // inside on click we are animating button
-                // by simply changing animateButton variable
-                animateButton = !animateButton
-            },
-            // on below line we are
-            // specifying id for our button 1
-            modifier = Modifier.layoutId("button1")
-        ) {
-            // on below line we are adding content
-            // inside our button in the form of column.
-            Column(
-                // in this column we are specifying a
-                // modifier with padding from all sides.
-                modifier = Modifier
-                    .padding(3.dp)
-                    .fillMaxWidth()
-                    .fillMaxHeight(),
-                // on below line we are specifying vertical
-                // and horizontal arrangement for our column
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                // on the below line we are specifying an image inside our column
-                Image(
+    Image(painter = painterResource(id = R.drawable.plogo), contentDescription ="plogo" ,
+        modifier =  Modifier.layoutId("img"))
 
-                    // on below line we are specifying
-                    // the drawable image for our image.
-                    painter = painterResource(id = R.drawable.plogo),
+        Text(text = "Puff",fontSize = 40.sp, fontFamily = splashFont, fontWeight = FontWeight.SemiBold ,color = colorResource(
+            id = R.color.splashtextcolor
+        ),
+            modifier =  Modifier.layoutId("text"))
 
-                    // on below line we are specifying
-                    // content description for our image
-                    contentDescription = "Python",
 
-                    // on below line we are setting
-                    // height and width for our image.
-                    modifier = Modifier
-                        .height(60.dp)
-                        .width(60.dp)
-                )
-                // on below line we are adding spacer/
-                Spacer(modifier = Modifier.height(5.dp))
-
-                // below spacer we are adding a
-                // simple text for displaying a text
-                Text(
-                    text = "Python",
-                    color = Color.White,
-                    fontSize = TextUnit(value = 18F, type = TextUnitType.Sp)
-                )
-            }
-        }
 
 
 //        Button(

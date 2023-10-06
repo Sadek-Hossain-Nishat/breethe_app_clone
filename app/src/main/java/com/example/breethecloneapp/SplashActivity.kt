@@ -74,9 +74,9 @@ class SplashActivity : ComponentActivity() {
 //                mediaplayer = mediaplayer
 //            )
 
-//            PuffApp()
+            PuffApp()
 
-            SleepScreenWelcomeScreen()
+//            SleepScreenWelcomeScreen()
 
 
 
