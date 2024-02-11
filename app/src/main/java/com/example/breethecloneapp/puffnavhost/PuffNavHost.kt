@@ -1,5 +1,8 @@
 package com.example.breethecloneapp.puffnavhost
 
+
+
+
 import androidx.compose.runtime.Composable
 
 import androidx.navigation.NavHostController
@@ -9,7 +12,9 @@ import com.example.breethecloneapp.ReasonSelectionScreen
 import com.example.breethecloneapp.Routes
 import com.example.breethecloneapp.SplashScreen
 import com.example.breethecloneapp.screens.sleep.SleepScreen
-import com.example.breethecloneapp.screens.sleep.SleepScreenRootforSharedElement
+import com.example.breethecloneapp.screens.sleep.SleepScreenAuthScreen
+
+
 import com.example.breethecloneapp.screens.sleep.SleepScreenWelcomeScreen
 
 @Composable
@@ -31,9 +36,12 @@ NavHost(navController = navcontroller, startDestination = Routes.Splash ){
     
     
     composable(route = Routes.SleepFirst){
-        SleepScreenWelcomeScreen()
+        SleepScreenWelcomeScreen(
+            navController = navcontroller
+        )}
+    composable(route = Routes.SleepAuthSignIn){
+        SleepScreenAuthScreen()
     }
-    
 
 
 }

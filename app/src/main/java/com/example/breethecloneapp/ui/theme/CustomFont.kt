@@ -11,6 +11,9 @@ val splashFont = FontFamily(Font(
     Font(
     R.font.ysabeaunfantreguar, FontWeight.Normal
 ),
+  Font(
+    R.font.ysabeaunfantbold, FontWeight.Bold
+),
 
 
 )

@@ -1,10 +1,12 @@
 package com.example.breethecloneapp
 
+
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
@@ -52,6 +54,8 @@ class SplashActivity : ComponentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         super.onCreate(savedInstanceState)
         mediaplayer = MediaPlayer.create(this,R.raw.splashscreenbackgroundmusic)
 //        Toast.makeText(this,"brethe app",Toast.LENGTH_SHORT).show()
@@ -76,7 +80,13 @@ class SplashActivity : ComponentActivity() {
 
             PuffApp()
 
-//            SleepScreenWelcomeScreen()
+//            val navController = rememberNavController()
+////
+//            SleepScreenWelcomeScreen(
+////                navController =navController
+//            )
+
+//            SleepScreenAuthScreen()
 
 
 

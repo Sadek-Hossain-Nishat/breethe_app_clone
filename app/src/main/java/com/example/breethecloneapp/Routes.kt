@@ -5,4 +5,5 @@ object Routes {
     const val Splash = "splash"
     const val Home = "home"
     const val SleepFirst = "sleepfirst"
+    const val SleepAuthSignIn = "sleepauthsignin"
 }

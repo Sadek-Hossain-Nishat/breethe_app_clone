@@ -1,46 +1,49 @@
 package com.example.breethecloneapp.screens.sleep
 
-import android.annotation.SuppressLint
+
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
-import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.ExperimentalTextApi
+
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.text.withAnnotation
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.MotionLayout
+
+
 import androidx.navigation.NavController
 import com.example.breethecloneapp.R
 import com.example.breethecloneapp.Routes
@@ -49,109 +52,33 @@ import com.example.breethecloneapp.ui.theme.splashFont
 import kotlinx.coroutines.delay
 
 
-@SuppressLint("SuspiciousIndentation")
+
+
 @Composable
-fun SleepScreenWelcomeScreen() {
-
-//    var animationstart by rememberSaveable {
-//        mutableStateOf(true)
-//    }
-//
-//
-//    val animationProgress by animateFloatAsState(targetValue =
-//    if (animationstart) 1f else 0f,
-//        animationSpec = tween(1000)
-//    )
-//
-//
-//
-//    LaunchedEffect(key1 = true ){
-//
-//        delay(3000)
-//
-//        animationstart =  !animationstart
-//    }
-//
-//
-
-//
-        Box(modifier = with(Modifier){
-
-            fillMaxSize()
-                .paint(
-                    painterResource(id = R.drawable.splash_background)
-                    ,
-                    contentScale = ContentScale.FillBounds
-
-                )
+fun SleepScreenWelcomeScreen(
+    navController: NavController
+) {
 
 
-        }
-
-        ) {
+    val context = LocalContext.current
 
 
+    Box(modifier = with(Modifier) {
 
-        }
-//
-//        Box(modifier = Modifier.fillMaxSize()
-////            , contentAlignment = Alignment.Center
-//        ) {
-//
-//            Column(
-////                horizontalAlignment = Alignment.CenterHorizontally,
-////                verticalArrangement = Arrangement.Center
-//            ) {
-//
-////                Spacer(modifier = Modifier.height(10.dp))
-//
-//
-//                MotionLayout(start = ConstraintSet (
-//                    """
-//                        {
-//
-//                        text1: {
-//                        center: ['parent', 'center']
-//                        }
-//
-//                        }
-//                    """
-//                ), end = ConstraintSet ("""
-//
-//
-//                     {
-//
-//                        text1: {
-//                        centerHorizontally: ['parent', 'center'],
-//                        top: ['parent', 'top', 20]
-//                        }
-//
-//                        }
-//
-//
-//                """.trimIndent()), progress = animationProgress) {
-//
-//
-//
-//                    Text(text ="Puff", fontSize = 35.sp, fontFamily = splashFont, fontWeight = FontWeight.SemiBold ,color = colorResource(
-//                        id = R.color.splashtextcolor
-//                    ),
-//                        modifier =  Modifier.layoutId("text1")
-//                    )
-//
-//                }
-//
-//
-//
-//
-//
-//
-//            }
-//
-//        }
+        fillMaxSize()
+            .paint(
+                painterResource(id = R.drawable.splash_background),
+                contentScale = ContentScale.FillBounds
+
+            )
 
 
+    }
 
+    ) {
+
+
+    }
 
 
     // on below line we are specifying animate button method.
@@ -169,19 +96,13 @@ fun SleepScreenWelcomeScreen() {
 
 
 
-    LaunchedEffect(key1 = true ){
+    LaunchedEffect(key1 = true) {
 
         delay(1000)
 
-        animateButton = ! animateButton
+        animateButton = !animateButton
     }
 
-    val name by rememberSaveable {
-        mutableStateOf("")
-    }
-    val email by rememberSaveable {
-        mutableStateOf("")
-    }
 
     // on below line we are creating a motion layout.
     MotionLayout(
@@ -204,24 +125,58 @@ fun SleepScreenWelcomeScreen() {
                  
                 },
                 
-                text: {
+                text1: {
                 
                 start: ['parent', 'start', 16],
                   end: ['parent', 'end', 16],
                   top: ['img', 'top', 100],
                   
                 
+                },
+                
+                 text2: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text1', 'top', 1000],
+                  
+                
+                },
+                
+                
+                 text3: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text2', 'top', 1000],
+                  
+                
+                },
+                
+                button: {
+                 start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text3', 'top', 1000],
+                  
+                
+                
+                },
+                
+                   text4: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['button', 'top', 1000],
+                  
+                
                 }
-                // on below line we are specifying width,height
-                // and margin from start, top and end for button2
-//                button2: {
-//                  width: "spread",
-//                  height: 120,
-//                  start: ['parent', 'start', 16],
-//                  end: ['parent', 'end', 16],
-//                  top: ['button1', 'bottom', 16],
-//                 
-//                }
+                
+                
+                
+                
+                
+                
+
             } """
         ),
 
@@ -241,7 +196,7 @@ fun SleepScreenWelcomeScreen() {
                 },
 
                 
-                 text: {
+                 text1: {
                 
                 start: ['parent', 'start', 16],
                   end: ['parent', 'end', 16],
@@ -249,14 +204,50 @@ fun SleepScreenWelcomeScreen() {
                   
                 
                 }
-                // on below line we are specifying width,height
-                // and margin from start, top and end for button2
-//                button2: {
-//                  width: 150,
-//                  height: 120,
-//                  start: ['button1', 'end', 10],
-//                  end: ['parent', 'end', 30]
-//                }
+                
+                
+                ,
+                
+                  text2: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text1', 'top', 200],
+                  
+                
+                },
+                
+                
+                 text3: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text2', 'top', 60],
+                  
+                
+                },
+                
+                button: {
+                 start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['text3', 'top', 200],
+                  
+                
+                
+                },
+                
+                   text4: {
+                
+                start: ['parent', 'start', 16],
+                  end: ['parent', 'end', 16],
+                  top: ['button', 'top', 70],
+                  
+                
+                }
+                
+                
+                
+
             } """
         ),
         // on below line we are specifying
@@ -269,89 +260,108 @@ fun SleepScreenWelcomeScreen() {
             .wrapContentHeight()
     ) {
         // on below line we are creating  a button.
-    Image(painter = painterResource(id = R.drawable.plogo), contentDescription ="plogo" ,
-        modifier =  Modifier.layoutId("img"))
+        Image(
+            painter = painterResource(id = R.drawable.plogo), contentDescription = "plogo",
+            modifier = Modifier.layoutId("img")
+        )
 
-        Text(text = "Puff",fontSize = 40.sp, fontFamily = splashFont, fontWeight = FontWeight.SemiBold ,color = colorResource(
-            id = R.color.splashtextcolor
-        ),
-            modifier =  Modifier.layoutId("text"))
+        Text(
+            text = "Puff",
+            fontSize = 40.sp,
+            fontFamily = splashFont,
+            fontWeight = FontWeight.Normal,
+            color = colorResource(
+                id = R.color.splashtextcolor
+            ),
+            modifier = Modifier.layoutId("text1")
+        )
+
+        Text(
+            text = "Get the best Sleep",
+            fontSize = 35.sp,
+            fontFamily = splashFont,
+            fontWeight = FontWeight.SemiBold,
+            color = colorResource(
+                id = R.color.splashtextcolor
+            ),
+            modifier = Modifier.layoutId("text2")
+        )
+        Text(
+            text = "of your life!",
+            fontSize = 35.sp,
+            fontFamily = splashFont,
+            fontWeight = FontWeight.SemiBold,
+            color = colorResource(
+                id = R.color.splashtextcolor
+            ),
+            modifier = Modifier.layoutId("text3")
+        )
+
+        Button(
+            onClick = {
+
+                navController.navigate(Routes.SleepAuthSignIn){
+                    mediaplayer.stop()
+                    popUpTo(Routes.Splash){
+                        inclusive = true
+                    }
+                }
 
 
 
+            }, shape = RoundedCornerShape(25.dp),
+            modifier = Modifier
+                .width(200.dp)
+                .layoutId("button"),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Blue,
 
-//        Button(
-//            onClick = {
-//                // inside on click we are animating button
-//                // by simply changing animateButton variable
-//                animateButton = !animateButton
-//            },
-//            // on below line we are specifying id for our button 2
-//            modifier = Modifier.layoutId("button2")
-//        ) {
-//            Column(
-//                // in this column we are specifying
-//                // a modifier with padding from all sides.
-//                modifier = Modifier
-//                    .padding(3.dp)
-//                    .fillMaxWidth()
-//                    .fillMaxHeight(),
-//                // on below line we are specifying vertical
-//                // and horizontal arrangement for our column
-//                verticalArrangement = Arrangement.Center,
-//                horizontalAlignment = Alignment.CenterHorizontally
-//            ) {
-//                // on below line we are specifying image inside our column
-//                Image(
-//                    // on below line we are specifying
-//                    // the drawable image for our image.
-//                    painter = painterResource(id = R.drawable.plogo),
-//
-//                    // on below line we are specifying
-//                    // content description for our image
-//                    contentDescription = "Javascript",
-//
-//                    // on below line we are setting
-//                    // height and width for our image.
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .width(60.dp)
-//                )
-//                // on below line we are adding spacer/
-//                Spacer(modifier = Modifier.height(5.dp))
-//
-//                // below spacer we are adding a
-//                // simple text for displaying a text
-//                Text(
-//                    text = "JavaScript",
-//                    color = Color.White,
-//                    fontSize = TextUnit(value = 18F, type = TextUnitType.Sp)
-//                )
-//
-//            }
-//        }
+                )
+        ) {
+
+            Text(text = "Get Started")
+
+
+        }
+
+        val annotatedString = buildAnnotatedString {
+            append("Already a Puff user?")
+
+            @OptIn(ExperimentalTextApi::class)
+            withAnnotation("tag", "annotation") {
+
+
+                withStyle(style = SpanStyle(Color.Blue)) {
+                    append("Log in")
+                }
+            }
+        }
+
+
+
+        ClickableText(
+            text = annotatedString,
+            style = TextStyle(
+                colorResource(
+                    id = R.color.splashtextcolor
+                ),
+                fontSize = 20.sp
+            ),
+
+
+            modifier = Modifier.layoutId("text4")
+        ) {
+            annotatedString.getStringAnnotations(it, it).firstOrNull()?.tag?.let { tag ->
+                Log.d("ClickableText", "$tag -th character is clicked.")
+                Toast.makeText(context, "$tag -th character is clicked.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+}
 
 
 
