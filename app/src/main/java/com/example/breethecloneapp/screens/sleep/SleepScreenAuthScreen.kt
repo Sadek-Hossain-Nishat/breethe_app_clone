@@ -8,7 +8,7 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateIntOffsetAsState
+
 import androidx.compose.animation.core.animateValueAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -21,16 +21,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBarsPadding
+
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.BasicTextField
+
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -47,9 +45,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalDensity
+
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -57,11 +53,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
+
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.breethecloneapp.R
@@ -99,7 +94,7 @@ fun SleepScreenAuthScreen() {
 
 
 
-    val configuration = LocalConfiguration.current
+//    val configuration = LocalConfiguration.current
    /***
     val heightInDp = configuration.screenHeightDp.dp
     val halfheightInDp = (configuration.screenHeightDp*0.6).dp
@@ -110,25 +105,29 @@ fun SleepScreenAuthScreen() {
 
     var moved by remember { mutableStateOf(false) }
     var headComponentmoved by remember { mutableStateOf(false) }
-    val pxToMove = with(LocalDensity.current) {
-        100.dp.toPx().roundToInt()
-    }
+//    val pxToMove = with(LocalDensity.current) {
+//        100.dp.toPx().roundToInt()
+//    }
     val offset by animateDpAsState(
         targetValue = if (moved) {
-            (configuration.screenHeightDp*0.35).dp
+//            (configuration.screenHeightDp*0.35).dp
+            250.dp
 
         } else {
-            (configuration.screenHeightDp*0.40).dp
+//            (configuration.screenHeightDp*0.40).dp
+            270.dp
         },
         label = "offset",
         animationSpec = tween(2000, easing = LinearOutSlowInEasing)
     )
     val headComponentoffset by animateDpAsState(
         targetValue = if (headComponentmoved) {
-            (configuration.screenHeightDp*0.05).dp
+//            (configuration.screenHeightDp*0.05).dp
+            50.dp
 
         } else {
-            (configuration.screenHeightDp*0.10).dp
+//            (configuration.screenHeightDp*0.10).dp
+               60.dp
         },
         label = "offset",
         animationSpec = tween(2000, easing = LinearOutSlowInEasing)
@@ -340,14 +339,14 @@ fun SleepScreenAuthScreen() {
 
 
         AnimatedVisibility(
-//            visible =btnvisible,
-            visible =true,
+            visible =btnvisible,
+//            visible =true,
             enter =  fadeIn(
                 // Fade in with the initial alpha of 0.3f.
                 animationSpec = tween(100,easing= FastOutLinearInEasing)
             ),
 
-//            modifier= Modifier.offset(y = (configuration.screenHeightDp*0.50).dp),
+            modifier= Modifier.offset(y =1.dp ),
             exit = fadeOut(
 
                 animationSpec = tween(100,easing= FastOutLinearInEasing)
